@@ -1,0 +1,28 @@
+{
+    "name": "deemru/cloaked",
+    "description": "Cloaks sensitive data",
+    "keywords": [ "security", "sensitive", "private", "key", "cloaked", "cloak" ],
+    "homepage": "https://github.com/deemru/Cloaked",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitrii Pichulin",
+            "email": "deem@deem.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "suggest": {
+        "ext-sodium": "For security and speed"
+    },
+    "autoload": {
+        "psr-4": { "deemru\\": "src/" }
+    },
+    "scripts": {
+        "test": [
+            "@php test/selftest.php"
+        ]
+    }
+}
