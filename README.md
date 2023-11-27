@@ -11,7 +11,7 @@
 $cloaked = new Cloaked();
 $sensitive = 'Hello, world!';
 $cloaked->cloak( $sensitive );
-$cloaked->use( function( $data ){ /*do stuff with*/ $data; } );
+$cloaked->uncloak( function( $data ){ /*do stuff with*/ $data; } );
 ```
 
 ## Requirements
