@@ -64,7 +64,7 @@ class Cloaked
      * @param callable $function Function to be used with sensitive data
      * @param string|null $variant Variant of sensitive data (default: null)
      */
-    public function use( $function, $variant = null )
+    public function uncloak( $function, $variant = null )
     {
         $cloaked = isset( $variant ) ? $this->variants[$variant] : $this->cloaked;
         $n = count( $cloaked );

@@ -97,7 +97,7 @@ searchInDump( $t, 1, $sensitiveHolder );
 
 $t->pretest( 'uncloak' );
 {
-    $cloaked->use( function( $data ) use ( &$sensitive ){ $sensitive = $data; } );
+    $cloaked->uncloak( function( $data ) use ( &$sensitive ){ $sensitive = $data; } );
     $t->test( $sensitive === $sensitiveHolder );
 }
 
@@ -114,7 +114,7 @@ searchInDump( $t, 1, $sensitiveHolder2 );
 
 $t->pretest( 'uncloak' );
 {
-    $cloaked->use( function( $data ) use ( &$sensitive2 ){ $sensitive2 = $data; }, '2' );
+    $cloaked->uncloak( function( $data ) use ( &$sensitive2 ){ $sensitive2 = $data; }, '2' );
     $t->test( $sensitive2 === $sensitiveHolder2 );
 }
 
@@ -125,9 +125,9 @@ $cloaked->cloak( $sensitive2, 'b' );
 $cloaked->cloak( $sensitiveHolder, 'c' );
 $cloaked->cloak( $sensitiveHolder2, 'd' );
 
-$cloaked->use( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'a' );
-$cloaked->use( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'b' );
-$cloaked->use( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'c' );
-$cloaked->use( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'd' );
+$cloaked->uncloak( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'a' );
+$cloaked->uncloak( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'b' );
+$cloaked->uncloak( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'c' );
+$cloaked->uncloak( function( $data ) use ( $t ){ searchInDump( $t, 1, $data ); }, 'd' );
 
 $t->finish();
