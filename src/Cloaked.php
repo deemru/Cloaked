@@ -75,6 +75,19 @@ class Cloaked
         $this->used( $data );
     }
 
+    /**
+     * Checks variant exist
+     *
+     * @param  string|null $vairant Variant of sensitive data (default: null)
+     */
+    public function exist( $variant = null )
+    {
+        if( isset( $variant ) )
+            return isset( $this->variants[$variant] );
+        else
+            return isset( $this->cloaked );
+    }
+
     private function cloakInit()
     {
         if( !isset( $this->cloakMap ) )

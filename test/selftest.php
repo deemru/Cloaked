@@ -86,11 +86,21 @@ $cloaked = new Cloaked;
 $sensitiveHolder = random_bytes( 32 );
 $sensitiveHolder2 = random_bytes( 32 );
 
+$t->pretest( 'exist (false)' );
+{
+    $t->test( $cloaked->exist() === false );
+}
+
 $t->pretest( 'cloak' );
 {
     $sensitive = $sensitiveHolder;
     $cloaked->cloak( $sensitive );
     $t->test( $sensitive === null );
+}
+
+$t->pretest( 'exist (true)' );
+{
+    $t->test( $cloaked->exist() === true );
 }
 
 searchInDump( $t, 1, $sensitiveHolder );
@@ -103,11 +113,21 @@ $t->pretest( 'uncloak' );
 
 searchInDump( $t, 2, $sensitiveHolder );
 
+$t->pretest( 'exist 2 (false)' );
+{
+    $t->test( $cloaked->exist( '2' ) === false );
+}
+
 $t->pretest( 'cloak variant' );
 {
     $sensitive2 = $sensitiveHolder2;
     $cloaked->cloak( $sensitive2, '2' );
     $t->test( $sensitive2 === null );
+}
+
+$t->pretest( 'exist 2 (true)' );
+{
+    $t->test( $cloaked->exist( '2' ) === true );
 }
 
 searchInDump( $t, 1, $sensitiveHolder2 );
