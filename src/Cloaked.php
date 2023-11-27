@@ -29,7 +29,7 @@ class Cloaked
             $n = strlen( $data );
             for( $i = 0; $i < $n; ++$i )
                 $data[$i] = chr( 0 );
-            unset( $data );
+            $data = null;
         }
     }
 
