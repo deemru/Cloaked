@@ -63,6 +63,8 @@ class Cloaked
      *
      * @param callable $function Function to be used with sensitive data
      * @param string|null $variant Variant of sensitive data (default: null)
+     *
+     * @return mixed Any return value function returns
      */
     public function uncloak( $function, $variant = null )
     {
@@ -71,8 +73,9 @@ class Cloaked
         $data = str_pad( '', $n, ' ' );
         for( $i = 0; $i < $n; ++$i )
             $data[$i] = $this->cloakBytes[$cloaked[$i]];
-        $function( $data );
+        $result = $function( $data );
         $this->used( $data );
+        return $result;
     }
 
     /**
